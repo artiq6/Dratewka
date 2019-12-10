@@ -1,5 +1,5 @@
 
-# PHPQuiz
+# Dratewka
 
 Ported game from ATARI 8bit
 
@@ -34,6 +34,6 @@ run game(firefox) you have to wait, there is no possibility to skip intro ;) SOR
 * **Artur Haluch** 
 
 ## Screens
-![screenDratewka](./screens/screenDratewka.png)
-![screenDratewka2](./screens/screenDratewka2.png)
+![screenDratewka](./screens/screenDratewka.PNG)
+![screenDratewka2](./screens/screenDratewka2.PNG)
 
