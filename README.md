@@ -1,7 +1,7 @@
 
 # PHPQuiz
 
-Simple quiz game with accoutns, admin panel etc.
+Ported game from ATARI 8bit
 
 ## Getting Started
 
@@ -15,32 +15,25 @@ copy repository
 ```
 2
 ```
-uznip, run xampp
+uznip
 ```
 3
 ```
-import database as 'quiz'
+run game(firefox) you have to wait, there is no possibility to skip intro ;) SORRY!
 ```
-4
-```
-run localhost/quiz
-```
+
 
 ## Built With
 
 * JS
 * HTML
 * CSS
-* BOOTSTRAP (v.4.0)
-* JQuery
-* MYSQL
 
 ## Authors
 
 * **Artur Haluch** 
 
 ## Screens
-![screenQuiz](./screens/screenQuiz.png)
-![screenQuiz2](./screens/screenQuiz2.png)
-![screenQuiz3](./screens/screenQuiz3.png)
-![screenQuiz4](./screens/screenQuiz4.png)
+![screenDratewka](./screens/screenDratewka.png)
+![screenDratewka2](./screens/screenDratewka2.png)
+
