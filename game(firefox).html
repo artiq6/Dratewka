@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        @font-face {
+            font-family: 'font';
+            src: url('fonts/font.ttf');
+        }
+
+        body {
+            font-family: 'font', sans-serif;
+            background: black;
+            color: white;
+            font-size: 15px;
+        }
+
+        img {
+            width: 480px;
+            height: 300px;
+        }
+
+        #main {
+            position: relative;
+            float: left;
+            width: 60%;
+            display: block;
+            margin: 5px;
+        }
+
+        #image {
+            width: 480px;
+            height: 300px;
+            outline: 8px solid gray;
+            background: green;
+
+        }
+        p#moves::before {
+            content: "You can go: ";
+        }
+
+        div#input {
+            margin-top: 30px;
+        }
+
+        div#compass {
+            display: block;
+            float: left;
+            position: relative;
+            top: 100px;
+            height: 180px;
+            width: 360px;
+            background-image: url("img/kompas.png");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        div#compass>div {
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            color: black;
+        }
+
+        div#n {
+            left: 163px;
+        }
+
+        div#s {
+            left: 172px;
+            bottom: 5px;
+        }
+
+        div#w {
+            left: -7px;
+            bottom: 50%;
+        }
+
+        div#e {
+            right: -10px;
+            bottom: 50%;
+        }
+
+        #whatnow::before {
+            content: "What now? ";
+        }
+
+        #whatnow::after {
+            content: ".";
+            color: white;
+            display: inline-block;
+            width: 8px;
+            height: 15px;
+            background: white;
+        }
+
+        #alert {
+            line-height: 1.6;
+            white-space: pre-line;
+            width: 150%;
+        }
+
+        #overlay {
+            position: relative;
+            float: left;
+            width: 60%;
+            display: block;
+            margin: 5px;
+            margin-top: 60px;
+            width: 520px;
+            height: 360px;
+            outline: 8px solid gray;
+            display: none;
+        }
+    </style>
+    <title>Dratweka</title>
+</head>
+
+<body>
+    <div id="overlay">
+    </div>
+    <div id="main">
+
+        <div id="head">
+            <p></p>
+        </div>
+        <div id="image"></div>
+        <div id="text">
+            <p id="moves"></p>
+            <p id="see"></p>
+            <p id="carrying"></p>
+        </div>
+        <div id="input">
+            <p id="whatnow"></p>
+        </div>
+    </div>
+
+    <div id="compass">
+        <div id="n">N</div>
+        <div id="s">S</div>
+        <div id="w">W</div>
+        <div id="e">E</div>
+    </div>
+
+    <script src="player.js"></script>
+    <script src="Locations.js"></script>
+    <script src="move.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function (event) {
+            Start();
+
+            UpdateUI(locations[4][7])
+            capslock = true;
+            pressanykey = false;
+            var inputText = "";
+            document.onkeydown = function (key) {
+                if (!pressanykey) {
+                    if (key.key == "Backspace") {
+                        inputText = inputText.slice(0, -1);
+                        console.log(inputText)
+                        var whatnow = document.getElementById('whatnow');
+                        whatnow.innerHTML = inputText;
+                    }
+                    else if (key.key == "Tab") {
+                        key.preventDefault();
+                    }
+                    else if (key.key == "Enter") {
+
+                        chceckText(inputText);
+                        inputText = "";
+                    }
+                    else if (key.key == "CapsLock" || key.key == "Shift") {
+                        if (capslock) {
+                            capslock = false;
+                        }
+                        else {
+                            capslock = true;
+                        }
+                    }
+                    else {
+                        if (key.key.length <= 1) {
+
+                            if (capslock) {
+                                inputText += key.key.toLocaleUpperCase();
+                            }
+                            else {
+                                inputText += key.key.toLocaleLowerCase();
+                            }
+                            console.log(inputText)
+
+                            var whatnow = document.getElementById('whatnow');
+                            whatnow.innerHTML = inputText;
+                        }
+                    }
+                }
+                else {
+                    stopAlert();
+                }
+            };
+
+            document.onkeyup = function (key) {
+                if (key.key == "Shift") {
+                    if (capslock) {
+                        capslock = false;
+                    }
+                    else {
+                        capslock = true;
+                    }
+                }
+            }
+    
+        });
+
+    </script>
+</body>
+
+</html>
